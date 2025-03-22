@@ -1,0 +1,31 @@
+{
+  "dependencies": {
+    "json-server": "^1.0.0-beta.3"
+  },
+  "name": "protoappbbva",
+  "version": "1.0.0",
+  "description": "proyecto final de beca cells 2025 ",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saulrodriguezsk/protoAppBBVA.git"
+  },
+  "keywords": [
+    "web",
+    "developer",
+    "frontend",
+    "web",
+    "components",
+    "OOP"
+  ],
+  "author": "Emilio Rodriguez Larracilla",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saulrodriguezsk/protoAppBBVA/issues"
+  },
+  "homepage": "https://github.com/saulrodriguezsk/protoAppBBVA#readme"
+}
