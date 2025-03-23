@@ -167,6 +167,3 @@ export class Dashboard extends LitElement {
     `;
   }
 }
-
-/* @"you@example.com"
-  "Your Name" */

@@ -2,8 +2,6 @@ import { LitElement, html, css } from "lit";
 import { Task } from "@lit/task";
 export class LoginPage extends LitElement {
   static styles = css`
-    
-
     :host {
       display: block;
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -33,7 +31,6 @@ export class LoginPage extends LitElement {
       :host {
         padding: 10px;
         margin: 10px;
-      
       }
 
       h2 {
@@ -261,7 +258,6 @@ export class LoginButton extends LitElement {
       font-size: 16px;
       font-weight: 500;
       cursor: pointer;
-
     }
 
     button:active {
