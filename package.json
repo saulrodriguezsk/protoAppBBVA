@@ -6,7 +6,9 @@
   "author": "saul.rguez.24@hotmail.com",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "web-dev-server --node-resolve --open --watch"
+    "start": "web-dev-server --node-resolve --open --watch",
+    "start:fake-api": "json-server db.json",
+    "dev": "concurrently --kill-others \"npm run start:fake-api\" \"npm run start\""
   },
   "repository": {
     "type": "git",
@@ -26,10 +28,11 @@
   },
   "homepage": "https://github.com/saulrodriguezsk/protoAppBBVA#readme",
   "dependencies": {
-    "lit": "^3.2.1",
-    "json-server": "^1.0.0-beta.3"
+    "json-server": "^1.0.0-beta.3",
+    "lit": "^3.2.1"
   },
   "devDependencies": {
-    "@web/dev-server": "^0.4.6"
+    "@web/dev-server": "^0.4.6",
+    "concurrently": "^9.1.2"
   }
 }
