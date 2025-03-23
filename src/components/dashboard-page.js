@@ -5,76 +5,46 @@ export class Dashboard extends LitElement {
     :host {
       display: block;
       font-family: "Segoe UI", sans-serif;
-      background-color: #f5f5f5;
+      background-color: #0e3470fb;
       padding: 20px;
       min-height: 100vh;
     }
 
-    .pantalla-loading {
+    .screen-isloading {
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       font-size: 24px;
-      color: #007bff;
-    }
-    .close-session {
-      position: absolute;
-      top: 2rem;
-      right: 2rem;
-      font-size: 2rem;
+      color: #fffffffa;
+      background-color: #ffffff00;
     }
 
-    .card-container {
-      margin: 0 auto;
-      width: 80%;
-      display: flex;
-      flex-flow: column nowrap;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-    }
-
-    .cuenta-card {
+    .account-card {
       background: linear-gradient(135deg, #007bff, #0056b3);
       color: white;
       border-radius: 10px;
       padding: 15px;
       margin-bottom: 15px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      display: flex;
-      flex-flow: row nowrap;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-      transition: all ease-in 0.2s;
-    }
-    .cuenta-card:hover {
-      transform: scale(1.05);
-      cursor: pointer;
     }
 
-    .card-image {
-      width: 50%;
-      height: auto;
-    }
-
-    .cuenta-card h3 {
+    .account-card h3 {
       margin: 0;
       font-size: 18px;
     }
 
-    .cuenta-card p {
+    .account-card p {
       margin: 5px 0;
       font-size: 14px;
     }
 
-    .cargar-mas {
+    .load-more {
       display: block;
       width: 100%;
       padding: 10px;
-      background-color: #007bff;
-      color: white;
+      background-color: #ffffff;
+      color: #0057b3;
       border: none;
       border-radius: 5px;
       font-size: 16px;
@@ -82,34 +52,53 @@ export class Dashboard extends LitElement {
       margin-top: 10px;
     }
 
-    .cargar-mas:hover {
-      background-color: #0056b3;
-    }
-
-    .prev-button {
+    .load-less {
       display: block;
       width: 100%;
       padding: 10px;
-      background-color: #6c757d;
-      color: white;
+      background-color: #ffffff;
+      color: #0057b3;
       border: none;
       border-radius: 5px;
       font-size: 16px;
       cursor: pointer;
-      margin-top: 20px;
+      margin-top: 10px;
     }
 
-    .prev-button:hover {
-      background-color: #5a6268;
+    .load-more:hover {
+      background-color: #0057b3;
+      color: #fff;
+    }
+
+    .back-button {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      padding: 0px;
+      background-color: #0e3470fb;
+      color: #ffffff;
+      border: none;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #0056b3;
     }
   `;
-
   static properties = {
     dataUser: {
       type: Object,
     },
 
-    mostrarTodo: {
+    showAll: {
       type: Boolean,
     },
     loading: {
@@ -120,7 +109,7 @@ export class Dashboard extends LitElement {
   constructor() {
     super();
     this.dataUser = {};
-    this.mostrarTodo = false;
+    this.showAll = false;
     this.loading = true;
   }
 
@@ -136,51 +125,48 @@ export class Dashboard extends LitElement {
   }
 
   toggleShowAll() {
-    this.mostrarTodo = !this.mostrarTodo;
+    this.showAll = !this.showAll;
   }
 
   goBackToLogin() {
     window.location.href = "./login-page.js";
   }
-
   render() {
     if (this.loading) {
-      return html`<section class="pantalla-loading">Cargando...</section>`;
+      return html`<loading-page></loading-page>`;
     }
 
-    const visiblecuentas = this.mostrarTodo
+    const visibleaccounts = this.showAll
       ? this.dataUser.accounts
       : this.dataUser.accounts.slice(0, 3);
 
     return html`
-      <section class="card-container">
-        <button class="close-session">X</button>
-        ${visiblecuentas.map(
+      <section>
+        <button class="back-button" @click="${this.goBack}">←</button>
+        ${visibleaccounts.map(
           (account) => html`
-            <section class="cuenta-card">
-              <div>
-                <h3>${account.typeAccount}</h3>
-                <p>Número: ${account.accountNumber}</p>
-                <p>Saldo: $ ${account.amount}</p>
-              </div>
-              <img
-                class="card-image"
-                src="https://www.bbva.mx/content/dam/public-web/mexico/images/tarjeta-contactles-azul-2400x1600.im1630611222914im.jpg?imwidth=1600"
-              />
+            <section class="account-card">
+              <h3>${account.typeAccount}</h3>
+              <p>Número: ${account.accountNumber}</p>
+              <p>Saldo: ${account.amount}</p>
             </section>
           `
         )}
-        ${this.dataUser.accounts.length > 3 && !this.mostrarTodo
+        ${this.dataUser.accounts.length > 3 && !this.showAll
           ? html`
-              <button class="cargar-mas" @click="${this.toggleShowAll}">
+              <button class="load-more" @click="${this.toggleShowAll}">
                 Ver más
               </button>
             `
-          : ""}
-        <button class="prev-button" @click="${this.goBackToLogin}">
-          Regresar al Login
-        </button>
+          : html`
+              <button class="load-less" @click="${this.toggleShowAll}">
+                mostrar menos
+              </button>
+            `}
       </section>
     `;
   }
 }
+
+/* @"you@example.com"
+  "Your Name" */
