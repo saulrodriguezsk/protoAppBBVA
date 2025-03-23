@@ -1,0 +1,70 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "usuario": "usuario123",
+      "contrasena": "contrasena123",
+      "nombre": "Juan Pérez",
+      "cuentas": [
+        {
+          "numeroCuenta": "1234567890",
+          "tipoCuenta": "Ahorros",
+          "saldo": 5000.0,
+          "descripcion": "Cuenta de ahorros principal"
+        },
+        {
+          "numeroCuenta": "9876543210",
+          "tipoCuenta": "Corriente",
+          "saldo": 2500.0,
+          "descripcion": "Cuenta corriente para gastos diarios"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "usuario": "usuario456",
+      "contrasena": "contrasena456",
+      "nombre": "María García",
+      "cuentas": [
+        {
+          "numeroCuenta": "1122334455",
+          "tipoCuenta": "Ahorros",
+          "saldo": 10000.0,
+          "descripcion": "Cuenta de ahorros a largo plazo"
+        },
+        {
+          "numeroCuenta": "5544332211",
+          "tipoCuenta": "Inversión",
+          "saldo": 15000.0,
+          "descripcion": "Cuenta de inversión en fondos mutuos"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "usuario": "usuario789",
+      "contrasena": "contrasena789",
+      "nombre": "Carlos Rodríguez",
+      "cuentas": [
+        {
+          "numeroCuenta": "6789012345",
+          "tipoCuenta": "Corriente",
+          "saldo": 1200.0,
+          "descripcion": "Cuenta corriente para pagos de servicios"
+        },
+        {
+          "numeroCuenta": "5432109876",
+          "tipoCuenta": "Ahorros",
+          "saldo": 8000.0,
+          "descripcion": "Cuenta de ahorros para viajes"
+        },
+        {
+          "numeroCuenta": "1357924680",
+          "tipoCuenta": "Inversión",
+          "saldo": 20000.0,
+          "descripcion": "Cuenta de inversión en acciones"
+        }
+      ]
+    }
+  ]
+}
