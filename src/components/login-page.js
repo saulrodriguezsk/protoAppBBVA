@@ -2,15 +2,7 @@ import { LitElement, html, css } from "lit";
 
 export class LoginPage extends LitElement {
   static styles = css`
-    header {
-      background-image: url("https://www.contrapunto-fbbva.es/wp-content/uploads/sites/4/2019/11/fbbva_headerweb_cicloBilbao.jpg");
-      background-size: cover;
-      background-position: center;
-      width: 100%;
-      height: 150px;
-      padding: 0px;
-      margin: 0px;
-    }
+    
 
     :host {
       display: block;
@@ -19,12 +11,13 @@ export class LoginPage extends LitElement {
       margin: 20px auto;
       padding: 20px;
       border-radius: 10px;
-      box-shadow: 0px 0px 10px #0000ff46;
+      justify-content: center;
+      align-items: center;
     }
 
     h2 {
       text-align: center;
-      color: #090909;
+      color: #ffffff;
       margin-bottom: 20px;
       font-size: 24px;
       font-weight: 600;
@@ -40,10 +33,11 @@ export class LoginPage extends LitElement {
       :host {
         padding: 10px;
         margin: 10px;
+      
       }
 
       h2 {
-        font-size: 20px;
+        font-size: 26px;
       }
     }
   `;
@@ -64,18 +58,18 @@ export class LoginPage extends LitElement {
 export class UsernameInput extends LitElement {
   static styles = css`
     label {
-      display: block;
-      margin-bottom: 8px;
-      color: #4d4a4a;
+      display: flex;
+      margin-bottom: 10px;
+      color: #ffffff;
       font-size: 14px;
       font-weight: 500;
     }
 
     input {
-      width: 100%;
+      width: 92%;
       padding: 10px;
       border: 1px solid #d5cccc;
-      border-radius: 8px;
+      border-radius: 0px;
       font-size: 14px;
       transition: border-color 0.3s ease;
     }
@@ -109,13 +103,12 @@ export class UsernameInput extends LitElement {
 
   render() {
     return html`
-      <label for="username">Usuario o Correo: </label>
+      <label for="username">Usuario: </label>
       <input
         type="text"
         id="username"
         .value="${this.username}"
         @input="${this.handleUsernameChange}"
-        placeholder="Ingresa tu usuario o correo..."
       />
     `;
   }
@@ -124,19 +117,20 @@ export class UsernameInput extends LitElement {
 export class PasswordInput extends LitElement {
   static styles = css`
     label {
-      display: block;
-      margin-top: 8px;
-      margin-bottom: 8px;
-      color: #4d4a4a;
+      display: flex;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      color: #ffffff;
       font-size: 14px;
       font-weight: 500;
     }
 
     input {
-      width: 100%;
-      padding: 12px;
+      width: 92%;
+      padding: 10px;
+      margin-bottom: 10px;
       border: 1px solid #d5cccc;
-      border-radius: 8px;
+      border-radius: 0px;
       font-size: 14px;
       transition: border-color 0.3s ease;
     }
@@ -170,7 +164,6 @@ export class PasswordInput extends LitElement {
         id="password"
         .value="${this.password}"
         @input="${this.handlePasswordChange}"
-        placeholder="Ingresa tu contraseña"
       />
     `;
   }
@@ -179,26 +172,26 @@ export class PasswordInput extends LitElement {
 export class LoginButton extends LitElement {
   static styles = css`
     button {
-      width: 100%;
-      padding: 12px;
-      background-color: #007bff;
-      color: #ffffff;
+      width: 250px;
+      padding: 10px;
+      background-color: #ffffff;
+      color: #0e3470fb;
       border: none;
-      border-radius: 8px;
+      border-radius: 0px;
       font-size: 16px;
       font-weight: 500;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+
     }
 
-    button:hover {
-      background-color: #0056b3;
+    button:active {
+      background-color: #0057b3a5;
+      transition: background-color 0.05s ease;
     }
 
     @media (max-width: quto) {
       button {
         font-size: 14px;
-        padding: 10px;
       }
     }
   `;

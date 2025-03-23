@@ -5,21 +5,22 @@ export class Dashboard extends LitElement {
         :host {
             display: block;
             font-family: 'Segoe UI', sans-serif;
-            background-color: #f5f5f5;
+            background-color: #0e3470fb;
             padding: 20px;
             min-height: 100vh;
         }
 
-        .pantalla-loading {
+        .screen-isloading {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             font-size: 24px;
-            color: #007bff;
+            color: #fffffffa;
+            background-color: #ffffff00;
         }
 
-        .cuenta-card {
+        .account-card {
             background: linear-gradient(135deg, #007bff, #0056b3);
             color: white;
             border-radius: 10px;
@@ -28,21 +29,21 @@ export class Dashboard extends LitElement {
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .cuenta-card h3 {
+        .account-card h3 {
             margin: 0;
             font-size: 18px;
         }
 
-        .cuenta-card p {
+        .account-card p {
             margin: 5px 0;
             font-size: 14px;
         }
 
-        .cargar-mas {
+        .load-more {
             display: block;
             width: 100%;
             padding: 10px;
-            background-color: #007bff;
+            background-color: #ffffff;
             color: white;
             border: none;
             border-radius: 5px;
@@ -51,55 +52,61 @@ export class Dashboard extends LitElement {
             margin-top: 10px;
         }
 
-        .cargar-mas:hover {
-            background-color: #0056b3;
+        .load-more:hover {
+            background-color: #0057b3;
         }
 
-        .prev-button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            background-color: #6c757d;
-            color: white;
+        .back-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            padding: 0px;
+            background-color: #0e3470fb;
+            color: #ffffff;
             border: none;
-            border-radius: 5px;
-            font-size: 16px;
+            border-radius: 50%;
+            font-size: 20px;
             cursor: pointer;
-            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s ease;
         }
 
-        .prev-button:hover {
-            background-color: #5a6268;
+        .back-button:hover {
+            background-color: #0056b3;
         }
     `;
 
     static properties = {
-        cuentas: { 
+        accounts: { 
             type: Array 
         },
-        mostrarTodo: { 
+        showAll: { 
             type: Boolean 
         },
-        loading: {
+        isloading: {
             type: Boolean 
         }
     };
 
     constructor() {
         super();
-        this.cuentas = [];
-        this.mostrarTodo = false;
-        this.loading = true;
+        this.accounts = [];
+        this.showAll = false;
+        this.isloading = true;
     }
 
     connectedCallback() {
         super.connectedCallback();
-        this._simulateLoading();
+        this.simulateisloading();
     }
 
-    _simulateLoading() {
+    simulateisloading() {
         setTimeout(() => {
-            this.loading = false;
+            this.isloading = false;
             this.loadAccounts();
         }, 2000); 
     }
@@ -108,38 +115,38 @@ export class Dashboard extends LitElement {
         fetch('./db.json')
             .then(response => response.json())
             .then(data => {
-                this.cuentas = data.cuentas;
+                this.accounts = data.accounts;
             });
     }
 
     toggleShowAll() {
-        this.mostrarTodo = !this.mostrarTodo;
+        this.showAll = !this.showAll;
     }
 
     goBackToLogin() {
-        window.location.href = './login-page.js';
+        return html`<login-page></login-page>`;
     }
 
     render() {
-        if (this.loading) {
-            return html`<section class="pantalla-loading">Cargando...</section>`;
+        if (this.isloading) {
+            return html`<loading-page></loading-page>`;
         }
 
-        const visiblecuentas = this.mostrarTodo ? this.cuentas : this.cuentas.slice(0, 3);
+        const visibleaccounts = this.showAll ? this.accounts : this.accounts.slice(0, 3);
 
         return html`
             <section>
-                ${visiblecuentas.map(account => html`
-                    <section class="cuenta-card">
+            <button class="back-button" @click="${this.goBack}">←</button>
+                ${visibleaccounts.map(account => html`
+                    <section class="account-card">
                         <h3>${account.type}</h3>
                         <p>Número: ${account.number}</p>
                         <p>Saldo: ${account.balance}</p>
                     </section>
                 `)}
-                ${this.cuentas.length > 3 && !this.mostrarTodo ? html`
-                    <button class="cargar-mas" @click="${this.toggleShowAll}">Ver más</button>
+                ${this.accounts.length > 3 && !this.showAll ? html`
+                    <button class="load-more" @click="${this.toggleShowAll}">Ver más</button>
                 ` : ''}
-                <button class="prev-button" @click="${this.goBackToLogin}">Regresar al Login</button>
             </section>
         `;
     }
