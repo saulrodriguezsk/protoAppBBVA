@@ -2,67 +2,117 @@
   "users": [
     {
       "id": 1,
-      "usuario": "usuario123",
-      "contrasena": "contrasena123",
-      "nombre": "Juan Pérez",
-      "cuentas": [
+      "username": "usuario123",
+      "password": "contrasena123",
+      "name": "Juan Pérez",
+      "accounts": [
         {
-          "numeroCuenta": "1234567890",
-          "tipoCuenta": "Ahorros",
-          "saldo": 5000.0,
-          "descripcion": "Cuenta de ahorros principal"
+          "accountNumber": "1234567890",
+          "typeAccount": "Ahorros",
+          "amount": 5000.0,
+          "description": "Cuenta de ahorros principal"
         },
         {
-          "numeroCuenta": "9876543210",
-          "tipoCuenta": "Corriente",
-          "saldo": 2500.0,
-          "descripcion": "Cuenta corriente para gastos diarios"
+          "accountNumber": "9876543210",
+          "typeAccount": "Corriente",
+          "amount": 2500.0,
+          "description": "Cuenta corriente para gastos diarios"
         }
       ]
     },
     {
       "id": 2,
-      "usuario": "usuario456",
-      "contrasena": "contrasena456",
-      "nombre": "María García",
-      "cuentas": [
+      "username": "usuario456",
+      "password": "contrasena456",
+      "name": "María García",
+      "accounts": [
         {
-          "numeroCuenta": "1122334455",
-          "tipoCuenta": "Ahorros",
-          "saldo": 10000.0,
-          "descripcion": "Cuenta de ahorros a largo plazo"
+          "accountNumber": "1122334455",
+          "typeAccount": "Ahorros",
+          "amount": 10000.0,
+          "description": "Cuenta de ahorros a largo plazo"
         },
         {
-          "numeroCuenta": "5544332211",
-          "tipoCuenta": "Inversión",
-          "saldo": 15000.0,
-          "descripcion": "Cuenta de inversión en fondos mutuos"
+          "accountNumber": "5544332211",
+          "typeAccount": "Inversión",
+          "amount": 15000.0,
+          "description": "Cuenta de inversión en fondos mutuos"
         }
       ]
     },
     {
       "id": 3,
-      "usuario": "usuario789",
-      "contrasena": "contrasena789",
-      "nombre": "Carlos Rodríguez",
-      "cuentas": [
+      "username": "usuario789",
+      "password": "contrasena789",
+      "name": "Carlos Rodríguez",
+      "accounts": [
         {
-          "numeroCuenta": "6789012345",
-          "tipoCuenta": "Corriente",
-          "saldo": 1200.0,
-          "descripcion": "Cuenta corriente para pagos de servicios"
+          "accountNumber": "6789012345",
+          "typeAccount": "Corriente",
+          "amount": 1200.0,
+          "description": "Cuenta corriente para pagos de servicios"
         },
         {
-          "numeroCuenta": "5432109876",
-          "tipoCuenta": "Ahorros",
-          "saldo": 8000.0,
-          "descripcion": "Cuenta de ahorros para viajes"
+          "accountNumber": "5432109876",
+          "typeAccount": "Ahorros",
+          "amount": 8000.0,
+          "description": "Cuenta de ahorros para viajes"
         },
         {
-          "numeroCuenta": "1357924680",
-          "tipoCuenta": "Inversión",
-          "saldo": 20000.0,
-          "descripcion": "Cuenta de inversión en acciones"
+          "accountNumber": "1357924680",
+          "typeAccount": "Inversión",
+          "amount": 20000.0,
+          "description": "Cuenta de inversión en acciones"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "username": "emilio",
+      "password": "1234",
+      "name": "Emilio Rodríguez",
+      "accounts": [
+        {
+          "accountNumber": "6789012345",
+          "typeAccount": "Corriente",
+          "amount": 1200.0,
+          "description": "Cuenta corriente para pagos de servicios"
+        },
+        {
+          "accountNumber": "5432109876",
+          "typeAccount": "Ahorros",
+          "amount": 8000.0,
+          "description": "Cuenta de ahorros para viajes"
+        },
+        {
+          "accountNumber": "1357924680",
+          "typeAccount": "Inversión",
+          "amount": 20000.0,
+          "description": "Cuenta de inversión en acciones"
+        },
+        {
+          "accountNumber": "1357924680",
+          "typeAccount": "Inversión",
+          "amount": 20000.0,
+          "description": "Cuenta de inversión en acciones"
+        },
+        {
+          "accountNumber": "1357924680",
+          "typeAccount": "Inversión",
+          "amount": 20000.0,
+          "description": "Cuenta de inversión en acciones"
+        },
+        {
+          "accountNumber": "1357924680",
+          "typeAccount": "Inversión",
+          "amount": 20000.0,
+          "description": "Cuenta de inversión en acciones"
+        },
+        {
+          "accountNumber": "1357924680",
+          "typeAccount": "Inversión",
+          "amount": 20000.0,
+          "description": "Cuenta de inversión en acciones"
         }
       ]
     }

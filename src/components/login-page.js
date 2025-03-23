@@ -1,9 +1,7 @@
 import { LitElement, html, css } from "lit";
-
+import { Task } from "@lit/task";
 export class LoginPage extends LitElement {
   static styles = css`
-    
-
     :host {
       display: block;
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -33,7 +31,6 @@ export class LoginPage extends LitElement {
       :host {
         padding: 10px;
         margin: 10px;
-      
       }
 
       h2 {
@@ -42,14 +39,80 @@ export class LoginPage extends LitElement {
     }
   `;
 
+  static properties = {
+    data: {
+      type: Object,
+    },
+
+    user: {
+      type: Object,
+    },
+  };
+  constructor() {
+    super();
+    this.data = {};
+    this.user = {
+      username: "",
+      password: "",
+    };
+  }
+
+  _getDataTask = new Task(this, {
+    task: async () => {
+      const response = await fetch(`http://localhost:3000/users`);
+      this.data = await response.json();
+    },
+    args: () => [],
+  });
+
+  connectedCallback() {
+    super.connectedCallback();
+    this._getDataTask.run();
+  }
+
+  _handleLogin() {
+    const { username, password } = this.user;
+    if (!username && !password) {
+      return;
+    }
+
+    const dataFindUser = this.data.find(
+      (user) => username === user.username && password === user.password
+    );
+
+    if (dataFindUser) {
+      const loginSuccess = new CustomEvent("onLoginSuccess", {
+        detail: {
+          name: "loginSuccess",
+          value: dataFindUser,
+        },
+      });
+      this.dispatchEvent(loginSuccess);
+    } else {
+      alert("credenciales invalidas");
+    }
+  }
+  _onclick() {
+    console.log(this.data);
+  }
+
+  _handleUserLogin(e) {
+    const { name, value } = e.detail;
+    this.user = { ...this.user, [name]: value };
+  }
+
   render() {
     return html`
       <header></header>
       <h2>Iniciar Sesión</h2>
       <section class="form">
-        <username-input></username-input>
-        <password-input></password-input>
-        <login-button></login-button>
+        <username-input
+          @onUserChange="${this._handleUserLogin}"
+        ></username-input>
+        <password-input
+          @onPasswordChange="${this._handleUserLogin}"
+        ></password-input>
+        <login-button @onLogin="${this._handleLogin}"></login-button>
       </section>
     `;
   }
@@ -99,6 +162,13 @@ export class UsernameInput extends LitElement {
 
   handleUsernameChange(event) {
     this.username = event.target.value;
+    const userLogin = new CustomEvent("onUserChange", {
+      detail: {
+        name: "username",
+        value: this.username,
+      },
+    });
+    this.dispatchEvent(userLogin);
   }
 
   render() {
@@ -154,6 +224,13 @@ export class PasswordInput extends LitElement {
 
   handlePasswordChange(event) {
     this.password = event.target.value;
+    const passwordLogin = new CustomEvent("onPasswordChange", {
+      detail: {
+        name: "password",
+        value: this.password,
+      },
+    });
+    this.dispatchEvent(passwordLogin);
   }
 
   render() {
@@ -181,7 +258,6 @@ export class LoginButton extends LitElement {
       font-size: 16px;
       font-weight: 500;
       cursor: pointer;
-
     }
 
     button:active {
@@ -216,11 +292,8 @@ export class LoginButton extends LitElement {
   }
 
   handleLogin() {
-    if (this.username && this.password) {
-      alert(`Usuario: ${this.username} \n Contraseña: ${this.password}`);
-    } else {
-      alert("Completa todos los campos");
-    }
+    const event = new CustomEvent("onLogin");
+    this.dispatchEvent(event);
   }
 
   render() {

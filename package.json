@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/saulrodriguezsk/protoAppBBVA#readme",
   "dependencies": {
+    "@lit/task": "^1.0.2",
     "json-server": "^1.0.0-beta.3",
     "lit": "^3.2.1"
   },
