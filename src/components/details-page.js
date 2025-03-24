@@ -154,7 +154,7 @@ export class Details extends LitElement {
             @click="${this.toggleImage}"
           />
         </section>
-        <h3>${this.dataDetails.accountNumber}</h3>
+
         <p>
           <strong>Número de tarjeta: ${this.dataDetails.cardNumber}</strong>
         </p>

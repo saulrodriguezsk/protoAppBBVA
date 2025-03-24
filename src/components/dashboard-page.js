@@ -3,17 +3,24 @@ import { LitElement, html, css } from "lit";
 export class Dashboard extends LitElement {
   static styles = css`
     :host {
-      display: block;
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      justify-content: start;
       font-family: "Segoe UI", sans-serif;
       background-color: #0e3470fb;
       padding: 20px;
       min-height: 100vh;
     }
 
+    h1 {
+      color: white;
+    }
+
     .screen-isloading {
       display: flex;
       justify-content: center;
-      align-items: center;
+
       height: 100vh;
       font-size: 24px;
       color: #fffffffa;
@@ -21,12 +28,56 @@ export class Dashboard extends LitElement {
     }
 
     .account-card {
-      background: linear-gradient(135deg, #007bff, #0056b3);
-      color: white;
-      border-radius: 10px;
-      padding: 15px;
-      margin-bottom: 15px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      color: #ffffff;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      position: relative;
+      overflow: hidden;
+      font-family: "Arial", sans-serif;
+      font-weight: bold;
+    }
+
+    .account-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url("https://i.pinimg.com/474x/55/cc/0c/55cc0c5225f3024e2c13921c7691f48d.jpg");
+      background-size: cover;
+      background-position: center;
+      opacity: 0.3;
+      z-index: 1;
+    }
+
+    .account-card .content {
+      position: relative;
+      z-index: 4;
+    }
+
+    .account-card .action-button {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 5px;
+      padding: 8px 15px;
+      margin-top: 15px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .account-card .action-button:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .account-card:hover {
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+      transform: translateY(-5px);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
     }
 
     .account-card h3 {
@@ -163,6 +214,7 @@ export class Dashboard extends LitElement {
       : this.dataUser.accounts.slice(0, 3);
 
     return html`
+      <h1>Bienvenido ${this.dataUser.name}</h1>
       <section>
         <button class="back-button" @click="${this.goBackToLogin}">←</button>
         ${visibleaccounts.map(

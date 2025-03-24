@@ -28,7 +28,6 @@ export class BbvaApp extends LitElement {
   }
 
   handleDetails(e) {
-    console.log("si");
     this.showDetails = true;
     this.dataDetails = e.detail.value;
   }
