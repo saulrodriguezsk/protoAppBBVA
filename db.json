@@ -73,42 +73,49 @@
       "name": "Emilio Rodríguez",
       "accounts": [
         {
+          "numberid": 1,
           "accountNumber": "6789012345",
           "typeAccount": "Corriente",
           "amount": 1200.0,
           "description": "Cuenta corriente para pagos de servicios"
         },
         {
+          "numberid": 2,
           "accountNumber": "5432109876",
           "typeAccount": "Ahorros",
           "amount": 8000.0,
           "description": "Cuenta de ahorros para viajes"
         },
         {
+          "numberid": 3,
           "accountNumber": "1357924680",
           "typeAccount": "Inversión",
           "amount": 20000.0,
           "description": "Cuenta de inversión en acciones"
         },
         {
+          "numberid": 4,
           "accountNumber": "1357924680",
           "typeAccount": "Inversión",
           "amount": 20000.0,
           "description": "Cuenta de inversión en acciones"
         },
         {
+          "numberid": 6,
           "accountNumber": "1357924680",
           "typeAccount": "Inversión",
           "amount": 20000.0,
           "description": "Cuenta de inversión en acciones"
         },
         {
+          "numberid": 6,
           "accountNumber": "1357924680",
           "typeAccount": "Inversión",
           "amount": 20000.0,
           "description": "Cuenta de inversión en acciones"
         },
         {
+          "numberid": 7,
           "accountNumber": "1357924680",
           "typeAccount": "Inversión",
           "amount": 20000.0,

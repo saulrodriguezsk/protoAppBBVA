@@ -104,6 +104,10 @@ export class Dashboard extends LitElement {
     loading: {
       type: Boolean,
     },
+
+    account: {
+      type: Object,
+    },
   };
 
   constructor() {
@@ -111,6 +115,7 @@ export class Dashboard extends LitElement {
     this.dataUser = {};
     this.showAll = false;
     this.loading = true;
+    this.account = {};
   }
 
   connectedCallback() {
@@ -132,6 +137,16 @@ export class Dashboard extends LitElement {
   goBackToLogin() {
     window.location.href = "./login-page.js";
   }
+
+  cardAccountClicked(account) {
+    const cardAccountClicked = new CustomEvent("cardAccountClicked", {
+      detail: {
+        name: "CardAccountClicked",
+        value: account,
+      },
+    });
+    this.dispatchEvent(cardAccountClicked);
+  }
   render() {
     if (this.loading) {
       return html`<loading-page></loading-page>`;
@@ -144,15 +159,18 @@ export class Dashboard extends LitElement {
     return html`
       <section>
         <button class="back-button" @click="${this.goBack}">←</button>
-        ${visibleaccounts.map(
-          (account) => html`
-            <section class="account-card">
+        ${visibleaccounts.map((account) => {
+          return html`
+            <section
+              @click="${() => this.cardAccountClicked(account)}"
+              class="account-card"
+            >
               <h3>${account.typeAccount}</h3>
               <p>Número: ${account.accountNumber}</p>
               <p>Saldo: ${account.amount}</p>
             </section>
-          `
-        )}
+          `;
+        })}
         ${this.dataUser.accounts.length > 3 && !this.showAll
           ? html`
               <button class="load-more" @click="${this.toggleShowAll}">

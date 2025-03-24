@@ -8,12 +8,17 @@ export class BbvaApp extends LitElement {
     logged: {
       type: Boolean,
     },
+
+    cardDataClicked: {
+      type: Object,
+    },
   };
 
   constructor() {
     super();
     this.dataUser = {};
     this.logged = false;
+    this.cardDataClicked = true;
   }
 
   handleLoginSuccess(e) {
@@ -26,6 +31,11 @@ export class BbvaApp extends LitElement {
       ? html` <login-page
           @onLoginSuccess="${this.handleLoginSuccess}"
         ></login-page>`
-      : html`<dashboard-page .dataUser="${this.dataUser}"></dashboard-page>`;
+      : html`<dashboard-page
+          .dataUser="${this.dataUser}"
+          @cardAccountClicked="${(e) => {
+            console.log(e);
+          }}"
+        ></dashboard-page>`;
   }
 }
