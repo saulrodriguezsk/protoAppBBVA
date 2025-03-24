@@ -147,7 +147,44 @@ export class Dashboard extends LitElement {
     });
     this.dispatchEvent(cardAccountClicked);
   }
+
   render() {
+    if (this.loading) {
+      return html`<loading-page></loading-page>`;
+    }
+
+    const visibleaccounts = this.showAll
+      ? this.dataUser.accounts
+      : this.dataUser.accounts.slice(0, 3);
+
+    return html`
+      <section>
+        <button class="back-button" @click="${this.goBackToLogin}">←</button>
+        ${visibleaccounts.map(
+          (account) => html`
+            <section class="account-card">
+              <h3>${account.typeAccount}</h3>
+              <p>Número: ${account.accountNumber}</p>
+              <p>Saldo: ${account.amount}</p>
+            </section>
+          `
+        )}
+        ${this.dataUser.accounts.length > 3 && !this.showAll
+          ? html`
+              <button class="load-more" @click="${this.toggleShowAll}">
+                Ver más
+              </button>
+            `
+          : html`
+              <button class="load-less" @click="${this.toggleShowAll}">
+                mostrar menos
+              </button>
+            `}
+      </section>
+    `;
+  }
+
+  /*   render() {
     if (this.loading) {
       return html`<loading-page></loading-page>`;
     }
@@ -184,5 +221,5 @@ export class Dashboard extends LitElement {
             `}
       </section>
     `;
-  }
+  } */
 }

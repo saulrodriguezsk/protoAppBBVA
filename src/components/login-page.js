@@ -50,7 +50,7 @@ export class LoginPage extends LitElement {
   };
   constructor() {
     super();
-    this.data = {};
+    this.data = [];
     this.user = {
       username: "",
       password: "",
@@ -60,7 +60,13 @@ export class LoginPage extends LitElement {
   _getDataTask = new Task(this, {
     task: async () => {
       const response = await fetch(`http://localhost:3000/users`);
-      this.data = await response.json();
+      const data = await response.json();
+      if (Array.isArray(data)) {
+        this.data = data;
+      } else {
+        console.error("La respuesta del servidor no es un array:", data);
+        this.data = [];
+      }
     },
     args: () => [],
   });
@@ -73,6 +79,11 @@ export class LoginPage extends LitElement {
   _handleLogin() {
     const { username, password } = this.user;
     if (!username && !password) {
+      return;
+    }
+
+    if (!Array.isArray(this.data)) {
+      console.error("this.data no es un array:", this.data);
       return;
     }
 

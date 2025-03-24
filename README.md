@@ -78,9 +78,9 @@
 ![Login Screen](/ruta/a/login-screen.png)
 
 ### Pantalla de Cuentas/Tarjetas
-![Accounts Screen](/ruta/a/accounts-screen.png)
+![cuentas Screen](/ruta/a/cuentas-screen.png)
 
 ### Pantalla de Resumen
-![Accounts Screen](/ruta/a/accounts-screen.png)
+![cuentas Screen](/ruta/a/cuentas-screen.png)
 
 ---

@@ -136,8 +136,12 @@ export class Details extends LitElement {
     this.showFront = !this.showFront;
   }
 
-  goBack() {
-    window.history.back();
+  goBackToDash() {
+    const returnDashEvent = new CustomEvent('returnDash', {
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(returnDashEvent);
   }
 
   render() {
@@ -152,7 +156,7 @@ export class Details extends LitElement {
 
     return html`
       <section class="resumen">
-        <button class="back-button" @click="${this.goBack}">←</button>
+        <button class="back-button" @click="${this.goBackToDash}">←</button>
         <section class="credit-imgcard">
           <img
             src="${this.showFront ? frontImage : backImage}"
