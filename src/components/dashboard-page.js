@@ -116,6 +116,7 @@ export class Dashboard extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this._simulateLoading();
+    console.log(this.dataUser);
   }
 
   _simulateLoading() {

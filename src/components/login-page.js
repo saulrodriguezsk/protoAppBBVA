@@ -172,6 +172,8 @@ export class UsernameInput extends LitElement {
   }
 
   render() {
+    console.log();
+
     return html`
       <label for="username">Usuario: </label>
       <input
