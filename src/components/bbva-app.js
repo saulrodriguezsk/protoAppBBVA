@@ -8,6 +8,9 @@ export class BbvaApp extends LitElement {
     logged: {
       type: Boolean,
     },
+    showDetails: {
+      type: Boolean,
+    },
   };
 
   constructor() {
@@ -15,12 +18,19 @@ export class BbvaApp extends LitElement {
     this.dataUser = {};
     this.logged = false;
     this.showDetails = false;
+    this.dataDetails = {};
   }
 
   handleLoginSuccess(e) {
     const { value: userInfo } = e.detail;
     this.dataUser = { ...userInfo };
     this.logged = true;
+  }
+
+  handleDetails(e) {
+    console.log("si");
+    this.showDetails = true;
+    this.dataDetails = e.detail.value;
   }
 
   handleLogout() {
@@ -41,11 +51,13 @@ export class BbvaApp extends LitElement {
     }
     return this.showDetails
       ? html`<details-page
+          .dataDetails="${this.dataDetails}"
           @returnDash="${this.handleReturnDash}"
         ></details-page>`
       : html`<dashboard-page
           .dataUser="${this.dataUser}"
-          @onLogout="${this.handleLogout}"
+          @returnLogin="${this.handleLogout}"
+          @cardAccountClicked="${this.handleDetails}"
         ></dashboard-page>`;
   }
 }

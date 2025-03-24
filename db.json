@@ -7,12 +7,14 @@
       "name": "Juan Pérez",
       "accounts": [
         {
+          "cardNumber": "4567890123456789",
           "accountNumber": "1234567890",
           "typeAccount": "Ahorros",
           "amount": 5000.0,
           "description": "Cuenta de ahorros principal"
         },
         {
+          "cardNumber": "5678901234567890",
           "accountNumber": "9876543210",
           "typeAccount": "Corriente",
           "amount": 2500.0,
@@ -27,12 +29,14 @@
       "name": "María García",
       "accounts": [
         {
+          "carNumber": "5678901234567890",
           "accountNumber": "1122334455",
           "typeAccount": "Ahorros",
           "amount": 10000.0,
           "description": "Cuenta de ahorros a largo plazo"
         },
         {
+          "cardNumber": "6789012345678901",
           "accountNumber": "5544332211",
           "typeAccount": "Inversión",
           "amount": 15000.0,
@@ -47,18 +51,21 @@
       "name": "Carlos Rodríguez",
       "accounts": [
         {
+          "cardNumber": "7890123456789012",
           "accountNumber": "6789012345",
           "typeAccount": "Corriente",
           "amount": 1200.0,
           "description": "Cuenta corriente para pagos de servicios"
         },
         {
+          "cardNumber": "8901234567890123",
           "accountNumber": "5432109876",
           "typeAccount": "Ahorros",
           "amount": 8000.0,
           "description": "Cuenta de ahorros para viajes"
         },
         {
+          "cardNumber": "0123456789012345",
           "accountNumber": "1357924680",
           "typeAccount": "Inversión",
           "amount": 20000.0,
@@ -73,53 +80,60 @@
       "name": "Emilio Rodríguez",
       "accounts": [
         {
-          "numberid": 1,
+          "cardNumber": "3456289312395678",
           "accountNumber": "6789012345",
           "typeAccount": "Corriente",
           "amount": 1200.0,
           "description": "Cuenta corriente para pagos de servicios"
         },
         {
-          "numberid": 2,
+          "cardNumber": "3456789012345678",
           "accountNumber": "5432109876",
           "typeAccount": "Ahorros",
           "amount": 8000.0,
           "description": "Cuenta de ahorros para viajes"
         },
         {
-          "numberid": 3,
+          "cardNumber": "2356469012345678",
+          "accountNumber": "1357924680",
+          "typeAccount": "Inversión",
+          "amount": 20000.0,
+          "description": "Cuenta de inversión en acciones"
+        },
+
+        {
+          "cardNumber": "0123456789012345",
           "accountNumber": "1357924680",
           "typeAccount": "Inversión",
           "amount": 20000.0,
           "description": "Cuenta de inversión en acciones"
         },
         {
-          "numberid": 4,
           "accountNumber": "1357924680",
           "typeAccount": "Inversión",
           "amount": 20000.0,
           "description": "Cuenta de inversión en acciones"
         },
         {
-          "numberid": 6,
-          "accountNumber": "1357924680",
-          "typeAccount": "Inversión",
-          "amount": 20000.0,
-          "description": "Cuenta de inversión en acciones"
+          "cardNumber": "9876543210987654",
+          "accountNumber": "2468013579",
+          "typeAccount": "Ahorros",
+          "amount": 10000.5,
+          "description": "Cuenta de ahorros para viajes"
         },
         {
-          "numberid": 6,
-          "accountNumber": "1357924680",
-          "typeAccount": "Inversión",
-          "amount": 20000.0,
-          "description": "Cuenta de inversión en acciones"
+          "cardNumber": "1122334455667788",
+          "accountNumber": "3579124680",
+          "typeAccount": "Corriente",
+          "amount": 5000.25,
+          "description": "Cuenta corriente para gastos diarios"
         },
         {
-          "numberid": 7,
-          "accountNumber": "1357924680",
+          "cardNumber": "8877665544332211",
+          "accountNumber": "4680135792",
           "typeAccount": "Inversión",
-          "amount": 20000.0,
-          "description": "Cuenta de inversión en acciones"
+          "amount": 30000.75,
+          "description": "Cuenta de inversión en fondos mutuos"
         }
       ]
     }

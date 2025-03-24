@@ -135,7 +135,11 @@ export class Dashboard extends LitElement {
   }
 
   goBackToLogin() {
-    window.location.href = "./login-page.js";
+    const returnLogin = new CustomEvent("returnLogin", {
+      bubbles: true,
+      composed: true,
+    });
+    this.dispatchEvent(returnLogin);
   }
 
   cardAccountClicked(account) {
@@ -146,6 +150,7 @@ export class Dashboard extends LitElement {
       },
     });
     this.dispatchEvent(cardAccountClicked);
+    console.log(cardAccountClicked);
   }
 
   render() {
@@ -162,7 +167,12 @@ export class Dashboard extends LitElement {
         <button class="back-button" @click="${this.goBackToLogin}">←</button>
         ${visibleaccounts.map(
           (account) => html`
-            <section class="account-card">
+            <section
+              @click="${() => {
+                this.cardAccountClicked(account);
+              }}"
+              class="account-card"
+            >
               <h3>${account.typeAccount}</h3>
               <p>Número: ${account.accountNumber}</p>
               <p>Saldo: ${account.amount}</p>
@@ -175,6 +185,8 @@ export class Dashboard extends LitElement {
                 Ver más
               </button>
             `
+          : this.dataUser.accounts.length < 3
+          ? ""
           : html`
               <button class="load-less" @click="${this.toggleShowAll}">
                 mostrar menos

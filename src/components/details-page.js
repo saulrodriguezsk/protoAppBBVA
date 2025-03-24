@@ -92,20 +92,21 @@ export class Details extends LitElement {
   `;
 
   static properties = {
-    account: {
-      type: Object,
-    },
     showFront: {
       type: Boolean,
     },
     isLoading: {
       type: Boolean,
     },
+
+    dataDetails: {
+      type: Object,
+    },
   };
 
   constructor() {
     super();
-    this.account = {};
+    this.dataDetails = {};
     this.showFront = true;
     this.isLoading = true;
   }
@@ -113,7 +114,6 @@ export class Details extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.simulateisloading();
-    this.loadAccountDetails();
   }
 
   simulateisloading() {
@@ -122,22 +122,12 @@ export class Details extends LitElement {
     }, 2000);
   }
 
-  loadAccountDetails() {
-    const params = new URLSearchParams(window.location.search);
-    const accountId = params.get("id");
-    fetch("/db.json")
-      .then((response) => response.json())
-      .then((data) => {
-        this.account = data.account.find((account) => account.id === accountId);
-      });
-  }
-
   toggleImage() {
     this.showFront = !this.showFront;
   }
 
   goBackToDash() {
-    const returnDashEvent = new CustomEvent('returnDash', {
+    const returnDashEvent = new CustomEvent("returnDash", {
       bubbles: true,
       composed: true,
     });
@@ -164,9 +154,17 @@ export class Details extends LitElement {
             @click="${this.toggleImage}"
           />
         </section>
-        <h3>${this.account.type}</h3>
-        <p><strong>Número:</strong> ${this.account.number}</p>
-        <p><strong>Saldo disponible:</strong> ${this.account.balance}</p>
+        <h3>${this.dataDetails.accountNumber}</h3>
+        <p>
+          <strong>Número de tarjeta: ${this.dataDetails.cardNumber}</strong>
+        </p>
+        <p>
+          <strong>Número de cuenta: ${this.dataDetails.accountNumber}</strong>
+        </p>
+        <p><strong>Saldo disponible: $ ${this.dataDetails.amount}</strong></p>
+        <p>
+          <strong> ${this.dataDetails.description}</strong>
+        </p>
       </section>
     `;
   }
